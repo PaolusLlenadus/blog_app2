@@ -1,4 +1,5 @@
 %h1 Posts
+= render 'shared/notifications'
 
 %table
   %thead 
@@ -11,6 +12,7 @@
         %td= post.title
         %td= post.body
         %td
+          = link_to "View Comments", post_comments_path(post)
           = link_to "Edit", edit_post_path(post)
           = link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure you want to delete #{post.title}" }
 

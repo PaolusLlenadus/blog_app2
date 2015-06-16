@@ -3,5 +3,6 @@ class Post < ActiveRecord::Base
 
   scope :bodies, -> { where(body: "body") }
 
+  has_many :comments, dependent: :destroy
   belongs_to :user
 end

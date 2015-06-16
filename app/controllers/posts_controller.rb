@@ -12,8 +12,9 @@ class PostsController < ApplicationController
     @post = Post.new post_params
 
     if @post.save
-      redirect_to posts_path
+      redirect_to posts_path, flash: { success: "Successfully Created" }
     else
+      flash[:error] = "Please fill in required fields"
       render :new
     end
   end
@@ -25,7 +26,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find params[:id]
     if @post.update post_params
-      redirect_to posts_path
+      redirect_to posts_path, flash: { success: "Successfully Updated" }
     else
       render :edit
     end
